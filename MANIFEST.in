@@ -1,2 +1,0 @@
-include browser_info/*.txt
-include browser_info/tests/*.txt

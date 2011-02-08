@@ -33,6 +33,7 @@ Device Type
 	request.is_android_device
 	request.is_webos_device
 	request.is_windows_phone_device
+	request.is_kindle_device
 
 True if the device is part of the given platform.
 
