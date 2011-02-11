@@ -49,17 +49,13 @@ class Middleware(object):
             elif request.META.has_key("HTTP_X_OPERAMINI_FEATURES"):
                 request.is_simple_device = True
             
+            elif 'application/vnd.wap.xhtml+xml' in request.META.get('HTTP_ACCEPT', '').lower():
+                request.is_simple_device = True
+            
             elif any([device in s for device in simple_devices]):
                 request.is_simple_device = True
             
             else:
-                if request.META.has_key("HTTP_ACCEPT"):
-                    s = request.META["HTTP_ACCEPT"].lower()
-                    if 'application/vnd.wap.xhtml+xml' in s:
-                        request.is_simple_device = True
-                        
-                        return
-                
                 # assume desktop at this point
                 request.is_wide_device = True
 
