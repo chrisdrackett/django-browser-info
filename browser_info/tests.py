@@ -4,7 +4,10 @@ from __init__ import Middleware
 
 class DummyRequest(object):
     def __init__(self, useragent):
-        self.META = {'HTTP_USER_AGENT': useragent}
+        self.META = {
+            'HTTP_USER_AGENT': useragent,
+            'HTTP_ACCEPT': ''
+        }
 
 def get_requests(agent_list):
     requests = []
@@ -25,6 +28,7 @@ class TestBrowserInfo(unittest.TestCase):
             # Safari
             'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; en-us) AppleWebKit/533.19.4 (KHTML, like Gecko) Version/5.0.3 Safari/533.19.4',
             'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_4; en-us) AppleWebKit/533.17.8 (KHTML, like Gecko) Version/5.0.1 Safari/533.17.8',
+            'mozilla/5.0 (macintosh; u; intel mac os x 10_6_6; en-us) applewebkit/533.19.4 (khtml, like gecko) version/5.0.3 safari/533.19.4',
         ]
         
         requests = get_requests(user_agents)
@@ -39,6 +43,7 @@ class TestBrowserInfo(unittest.TestCase):
             # Firefox
             'Mozilla/5.0 (Windows; U; Windows NT 6.1; nl; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13',
             'Mozilla/5.0 (Macintosh; U; PPC Mac OS X 10.5; en-US; rv:1.9.0.3) Gecko/2008092414 Firefox/3.0.3',
+            'mozilla/5.0 (macintosh; intel mac os x 10.6; rv:2.0b6) gecko/20100101 firefox/4.0b6'
             # IE
             'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)',
             'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; GTB0.0; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; GACID=)',

@@ -5,7 +5,7 @@ class Middleware(object):
     def process_request(request):
         if request.META.has_key("HTTP_USER_AGENT"):
             s = request.META["HTTP_USER_AGENT"].lower()
-            
+            print s
             #defaults
             request.is_adnroid_device = False
             request.is_kindle_device = False
@@ -19,7 +19,6 @@ class Middleware(object):
             
             if 'applewebkit' in s:
                 request.is_webkit = True
-            
             
             if 'ipad' in s:
                 request.is_ios_device = True
@@ -49,20 +48,19 @@ class Middleware(object):
             
             elif request.META.has_key("HTTP_X_OPERAMINI_FEATURES"):
                 request.is_simple_device = True
-                
-            elif request.META.has_key("HTTP_ACCEPT"):
-                s = request.META["HTTP_ACCEPT"].lower()
-                if 'application/vnd.wap.xhtml+xml' in s:
-                    request.is_simple_device = True
-            
             
             elif any([device in s for device in simple_devices]):
                 request.is_simple_device = True
-
+            
             else:
+                if request.META.has_key("HTTP_ACCEPT"):
+                    s = request.META["HTTP_ACCEPT"].lower()
+                    if 'application/vnd.wap.xhtml+xml' in s:
+                        request.is_simple_device = True
+                        return None
+                
                 # assume desktop at this point
                 request.is_wide_device = True
-            
 
 def add_browser_info(view):
     """ View Decorator that adds a "mobile" attribute to the request which is
