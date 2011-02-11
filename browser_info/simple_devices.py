@@ -28,7 +28,6 @@ simple_devices = [
     'philips',
     'sanyo',
     'sharp',
-    'sie',
     'portalmmm',
     'blazer',
     'avantgo',
