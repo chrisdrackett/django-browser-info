@@ -9,7 +9,6 @@ setup(
     url = "https://github.com/chrisdrackett/django-browser-info",
     packages = [
         "browser_info",
-        "browser_info.tests",
     ],
     classifiers = [
         "Development Status :: 4 - Beta",
