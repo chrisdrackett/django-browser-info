@@ -57,7 +57,8 @@ class Middleware(object):
                     s = request.META["HTTP_ACCEPT"].lower()
                     if 'application/vnd.wap.xhtml+xml' in s:
                         request.is_simple_device = True
-                        return None
+                        
+                        return
                 
                 # assume desktop at this point
                 request.is_wide_device = True
