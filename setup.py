@@ -6,6 +6,7 @@ setup(
     description='Django middleware and view decorator to add browser info to the request object',
     long_description = open("readme.md").read(),
     author='Chris Drackett',
+    author_email='drackett@mac.com',
     url = "https://github.com/chrisdrackett/django-browser-info",
     packages = [
         "browser_info",
