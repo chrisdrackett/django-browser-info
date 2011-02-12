@@ -5,7 +5,7 @@ class Middleware(object):
     def process_request(request):
         if request.META.has_key("HTTP_USER_AGENT"):
             s = request.META["HTTP_USER_AGENT"].lower()
-            print s
+            
             #defaults
             request.is_adnroid_device = False
             request.is_kindle_device = False
