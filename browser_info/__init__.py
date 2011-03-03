@@ -32,6 +32,9 @@ class Middleware(object):
             elif 'android' in s:
                 request.is_android_device = True
                 request.is_touch_device = True
+                
+                if 'xoom' in s:
+                    request.is_wide_device = True
             
             elif 'webos' in s:
                 request.is_webos_device = True
