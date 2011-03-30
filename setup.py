@@ -2,7 +2,7 @@ from distutils.core import setup
  
 setup(
     name='django-browser-info',
-    version='0.9.1',
+    version='0.9.2',
     description='Django middleware and view decorator to add browser info to the request object',
     author='Chris Drackett',
     author_email='drackett@mac.com',
