@@ -7,7 +7,7 @@ class Middleware(object):
             s = request.META["HTTP_USER_AGENT"].lower()
             
             #defaults
-            request.is_adnroid_device = False
+            request.is_android_device = False
             request.is_kindle_device = False
             request.is_ios_device = False
             request.is_touch_device = False
