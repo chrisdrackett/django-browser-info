@@ -3,19 +3,19 @@ from simple_devices import simple_devices
 class Middleware(object):
     @staticmethod
     def process_request(request):
+        #defaults
+        request.is_android_device = False
+        request.is_kindle_device = False
+        request.is_ios_device = False
+        request.is_touch_device = False
+        request.is_simple_device = False
+        request.is_webkit = False
+        request.is_webos = False
+        request.is_wide_device = False
+        request.is_windows_phone_device = False
+
         if request.META.has_key("HTTP_USER_AGENT"):
             s = request.META["HTTP_USER_AGENT"].lower()
-            
-            #defaults
-            request.is_android_device = False
-            request.is_kindle_device = False
-            request.is_ios_device = False
-            request.is_touch_device = False
-            request.is_simple_device = False
-            request.is_webkit = False
-            request.is_webos = False
-            request.is_wide_device = False
-            request.is_windows_phone_device = False
             
             if 'applewebkit' in s:
                 request.is_webkit = True
@@ -61,6 +61,8 @@ class Middleware(object):
             else:
                 # assume desktop at this point
                 request.is_wide_device = True
+        else:
+            request.is_wide_device = True
 
 def add_browser_info(view):
     """ View Decorator that adds a "mobile" attribute to the request which is

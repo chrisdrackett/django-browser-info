@@ -180,6 +180,23 @@ class TestBrowserInfo(unittest.TestCase):
             self.assertEqual(request.is_kindle_device, False)
             self.assertEqual(request.is_wide_device, False)
             self.assertEqual(request.is_touch_device, False)
+            
+    def testNoUA(self):
+        class NoUARequest(object):
+            META = {}
+        
+        request = NoUARequest()
+        Middleware.process_request(request)
+        
+        assert not request.is_android_device
+        assert not request.is_kindle_device
+        assert not request.is_ios_device
+        assert not request.is_touch_device
+        assert not request.is_simple_device
+        assert not request.is_webkit 
+        assert not request.is_webos
+        assert request.is_wide_device
+        assert not request.is_windows_phone_device
 
 if __name__ == '__main__':
     unittest.main()
