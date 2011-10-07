@@ -30,6 +30,7 @@ Device Type
 -----------
 
 	request.is_ios_device
+	request.is_ios5_device
 	request.is_android_device
 	request.is_webos_device
 	request.is_windows_phone_device

@@ -7,6 +7,7 @@ class Middleware(object):
         request.is_android_device = False
         request.is_kindle_device = False
         request.is_ios_device = False
+        request.is_ios5_device = False
         request.is_touch_device = False
         request.is_simple_device = False
         request.is_webkit = False
@@ -24,11 +25,11 @@ class Middleware(object):
                 request.is_ios_device = True
                 request.is_touch_device = True
                 request.is_wide_device = True
-                
+            
             elif 'iphone' in s or 'ipod' in s:
                 request.is_ios_device = True
                 request.is_touch_device = True
-                
+            
             elif 'android' in s:
                 request.is_android_device = True
                 request.is_touch_device = True
@@ -61,6 +62,9 @@ class Middleware(object):
             else:
                 # assume desktop at this point
                 request.is_wide_device = True
+            
+            if request.is_ios_device and 'os 5' in s:
+                request.is_ios5_device = True
         else:
             request.is_wide_device = True
 
